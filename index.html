@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Leopoldo Calderas' personal webpage and portfolio">
+  <meta name="keywords" content="Leopoldo, Calderas, MIT, student, film, computer, science">
+  <meta name="author" content="Leopoldo Calderas">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leo - Home</title>
+  <!-- favicon -->
+  <link rel="shortcut icon" href="img/favicon-copy.ico" type="image/x-icon">
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="js/youtube-popup/YouTubePopUp.css" type="text/css">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300, 400|Source+Sans+Pro|Open+Sans:200, 300|Raleway: 200, 400" rel="stylesheet">
+  <!-- JS libaries -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://use.fontawesome.com/a68de5500d.js"></script>
+  <script src="js/jquery.easing.compatibility.js"></script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script type="text/javascript" src="js/youtube-popup/YouTubePopUp.jquery.js"></script>
+  <script type="text/javascript">
+    jQuery(function(){
+	  jQuery("a.bla-1").YouTubePopUp();
+	});
+  </script>
+  <!-- Google Analytics -->
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	  
+    ga('create', 'UA-89793860-1', 'auto');
+	ga('send', 'pageview');
+  </script>
+
+  <script>
+  	const mq = window.matchMedia( "(max-width: 500px)" );
+
+    var home = true;
+    var about_clkd = false;
+	var video_clkd = false;
+	var resume_clkd = false;
+	var sound_on = true;
+
+	var nav_links = [about_clkd, video_clkd, resume_clkd];
+
+	$(document).ready(function() {
+
+		$("#home-img").animate({'opacity': '1'}, 1500, 'easeInOutSine');
+		$("#header").animate({'opacity': '1'}, 1500, 'easeInOutSine');
+		$("#pre_header").animate({'opacity': '1'}, 1500, 'easeInOutSine');
+		$(".social-link").animate({'opacity': '1'}, 1500, 'easeInOutSine');
+		$("#sound-img").animate({'opacity': '1'}, 1500, 'easeInOutSine');
+
+		var myAudio = document.getElementById("rain-audio");
+		// myAudio.pause();
+
+		var switchFocus = function(mainDiv, otherDivs) {
+			otherDivs.forEach(function(divEl, i, divArray) {
+				if ( $(divEl).css("display") == "block") {
+					$(divEl).animate({"opacity": "0"}, 750, 'easeOutSine', function() {
+						$(divEl).css("display", "none");
+						$(mainDiv).css("display", "block");
+						$(mainDiv).animate({"opacity": "1"}, 750, 'easeOutSine');
+					});
+				} 
+			});
+		}
+
+		var switchFocusTable = function(mainTable, otherTables) {
+			otherTables.forEach(function(tableEl, i, tableArray) {
+				if ( $(tableEl).css("display") == "table") {
+					$(tableEl).animate({"opacity": "0"}, 750, 'easeOutSine', function() {
+						$(tableEl).css("display", "none");
+						$(mainTable).css("display", "table");
+						$(mainTable).animate({"opacity": "1"}, 750, 'easeOutSine');
+					});
+				} 
+			});
+		}
+		
+
+		var leaveHome = function() {
+
+			if (mq.matches) {
+				$(".nav-link").animate({"margin-top": "8%"}, 1000, 'easeInOutSine');
+				$("#name").animate({"margin-bottom": "0px"}, 1000, 'easeInOutSine');
+			} else {
+			}
+			
+			$("#header").animate({'padding-top': '0px'}, 1500, 'easeInOutSine');
+			
+
+			$("#home-img").animate({'opacity': '0'}, 1000, 'easeInOutSine');
+			$("#name").css("cursor", "pointer");
+			
+		}	
+
+		var fadeInFromHome = function(mainDiv) {
+			$(mainDiv).css("display", "block");
+			$(mainDiv).animate({"opacity": "1"}, 1500, 'easeInOutSine');
+		}
+
+		// AUDIO HANDLING
+
+		$("#sound-img").mouseover(function() {
+			if (myAudio.paused) {
+				$("#sound-img").attr("src", "img/sound-off-gold.png");
+			} else {
+				$("#sound-img").attr("src", "img/sound-on-gold.png");
+			}
+		});
+
+		$("#sound-img").mouseout(function() {
+			if (myAudio.paused) {
+				$("#sound-img").attr("src", "img/sound-off.png");
+			} else {
+				$("#sound-img").attr("src", "img/sound-on.png");
+			}
+		})
+
+		$("#sound-img").click(function() {
+			if (myAudio.paused) {
+				myAudio.play();
+				$("#sound-img").attr("src", "img/sound-on.png");
+			}
+			else {
+				myAudio.pause();
+				$("#sound-img").attr("src", "img/sound-off.png");
+			}
+		});
+
+		$(".vid-div").click(function() {
+			if (!(myAudio.paused)) {
+				myAudio.pause();
+				$("#sound-img").attr("src", "img/sound-off.png");
+			}
+		})
+
+		// CONTENT NAVIGATION
+
+		$("#about-link").click(function() {
+			$(".nav-link").css("opacity", "1");
+			$(this).animate({'opacity': '0.5'}, 'slow');
+			// No other content currently displayed
+			if (home) {
+				leaveHome();
+				fadeInFromHome("#about-div");
+				home = false;
+			} else {
+				switchFocus("#about-div", ["#video-div", "#resume-div"])
+			}
+		});
+
+		$("#video-link").click(function() {
+			$(".nav-link").css("opacity", "1");
+			$(this).animate({'opacity': '0.5'}, 'slow');
+			// No other content currently displayed
+			if (home) {
+				leaveHome();
+				fadeInFromHome("#video-div");
+				home = false;
+			} else {
+				switchFocus("#video-div", ["#about-div", "#resume-div"])
+			}
+		});
+
+		$("#resume-link").click(function() {
+			$(".nav-link").css("opacity", "1");
+			$(this).animate({'opacity': '0.5'}, 'slow');
+			// No other content currently displayed
+			if (home) {
+				leaveHome();
+				fadeInFromHome("#resume-div");
+				home = false;
+			} else {
+				switchFocus("#resume-div", ["#video-div", "#about-div"])
+			}
+		});
+
+
+		// RETURN TO HOME
+
+		$("#name").click(function() {
+			if (home == false) {
+				home = true;
+
+				if (mq.matches) {
+					$("#header").animate({'padding-top': '50%'}, 1500, 'easeInOutSine');
+					$("#name").animate({"margin-bottom": "25px"}, 1000, 'easeInOutSine');
+					$(".nav-link").animate({"margin-top": "20%"}, 1500, 'easeInOutSine');
+				} else {
+					$("#header").animate({'padding-top': '25%'}, 1500, 'easeInOutSine');
+					$("#name").animate({"margin-bottom": "25px"}, 1000, 'easeInOutSine');
+					$(".nav-link").animate({"margin": "0"}, 1500, 'easeInOutSine');
+				}
+				$(".nav-link").css("opacity", "1");
+				// Bring back home image and header
+				$("#home-img").animate({'opacity': '1'}, 1500, 'easeInOutSine');
+				$("#name").css("cursor", "default");	
+				// Fade out any content
+				['#resume-div', '#about-div', '#video-div'].forEach(function(divEl) {
+					$(divEl).animate({"opacity": "0"}, 1000, 'easeOutSine', function() {
+						$(divEl).css("display", "none");
+					});
+				});
+				
+			}
+		});
+
+
+		// VIDEO NAVIGATION
+
+		$("#films-link").click(function() {
+			$(".video-nav-link").css("opacity", "1");
+			$(this).animate({'opacity': '0.5'}, 'slow');
+			switchFocusTable("#films-table", ["#promo-table", "#other-table"]);
+		})
+
+		$("#promo-link").click(function() {
+			$(".video-nav-link").css("opacity", "1");
+			$(this).animate({'opacity': '0.5'}, 'slow');
+			switchFocusTable("#promo-table", ["#films-table", "#other-table"]);
+		})
+
+		$("#other-link").click(function() {
+			$(".video-nav-link").css("opacity", "1");
+			$(this).animate({'opacity': '0.5'}, 'slow');
+			switchFocusTable("#other-table", ["#films-table", "#promo-table"]);
+		})
+
+	});
+	</script>
+
+</head>
+
+<body class="home" id="home">
+
+<div id="pre_header">
+
+	<a href="https://www.facebook.com/leo.calderas" target="_blank" class="social-link-a"><div class="social-link"><i class="fa fa-facebook social-icons fa-lg" aria-hidden="true"></i></div></a>
+	<a href="https://www.instagram.com/leonidasdicaprio/" target="_blank" class="social-link-a"><div class="social-link"><i class="fa fa-instagram social-icons fa-lg" aria-hidden="true"></i></div></a>
+	<a href="https://twitter.com/LeoCalderas?lang=en" target="_blank" class="social-link-a"><div class="social-link"><i class="fa fa-twitter social-icons fa-lg" aria-hidden="true"></i></div></a>
+	<a href="https://vimeo.com/leocalderas" target="_blank" class="social-link-a"><div class="social-link"><i class="fa fa-vimeo social-icons fa-lg" aria-hidden="true"></i></div></a>
+	<a href="https://www.linkedin.com/in/leopoldo-calderas/" target="_blank" class="social-link-a"><div class="social-link"><i class="fa fa-linkedin social-icons fa-lg" aria-hidden="true"></i></div></a>
+	<img src="img/sound-on-gold.png" id="sound-img">
+
+</div>
+
+<audio id="rain-audio" preload="auto" autoplay loop>
+  <source src="mp3/rain-sounds.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+<img src="img/small-leo-blueberry-crop-outline.png" id="home-img">
+
+<div id="header">
+	<h1 id="name">Leopoldo Calderas</h1>
+
+	<div id="nav-div">
+
+		<div class="nav-link" id="about-link">About</div>
+		<div class="nav-link" id="video-link">Video</div>
+		<div class="nav-link" id="resume-link">Resume</div>
+
+	</div>
+<hr>
+</div>
+
+<div id="about-div">
+	<h2 id="contact">Contact: pistachios7@gmail.com</h2>
+	<p>I was raised in Southern California sunshine and wildfires.</p>
+	<p>Growing up, I was really interested in the natural world, in connecting with my emotions through music, and in long distance running.</p>
+	<p>I had always wanted to be a scientist, and planned on being a physicist when I first started going to MIT.</p> 
+	<p>But after some time there, I saw that spending my time figuring out the mysteries of the universe wasn't really for me.</p> 
+	<p>Instead, I found excitement in storytelling and in computer science.</p>
+	<p>Today, as a recent graduate, I have a few big aspirations, like directing a feature film and helping people respect and love one another on a global scale.</p>
+	<p>I'm open to new friendships and experiences that will one day make for a riveting tale to tell my grandkids.</p>
+</div>
+
+<div id="video-div">
+
+	<div id="video-nav">
+		<div class="video-nav-link" id="films-link">Films</div>
+		<!-- <div class="video-nav-link" id="thought-link">Thought Pieces</div> -->
+		<div class="video-nav-link" id="promo-link">Promotional Videos</div>
+		<div class="video-nav-link" id="other-link">Other Fun</div>
+	</div>	
+
+	<div id="video-content">
+		<table class="video-table" id="films-table">
+			<tr>
+				<td><a class="bla-1" href="https://www.youtube.com/watch?v=h18MWAD1zGU"><img src="img/video-thumbnails/memories.jpg" class="vid-div" alt="memories"></a></td>
+				<td><a class="bla-1" href="https://www.youtube.com/watch?v=abfuSkEXWRo"><img src="img/video-thumbnails/madrileno.jpg" class="vid-div" alt="madrileno"></a></td>
+			</tr>
+
+			<tr>
+				<td><a class="bla-1" href="https://www.youtube.com/watch?v=gPB85pBROJo"><img src="img/video-thumbnails/fears.jpg" class="vid-div" alt="fears"></a></td>
+				<td><a class="bla-1" href="https://www.youtube.com/watch?v=CuypU045mv4"><img src="img/video-thumbnails/hike-most-tragic.jpg" class="vid-div" alt="A hike most tragic"></a></td>
+			</tr>
+			<tr>
+				<td><a class="bla-1" href="https://www.youtube.com/watch?v=uMFJ-2PSRhg"><img src="img/video-thumbnails/room-to-breathe.png" class="vid-div" alt="room-to-breath"></a></td>
+				<td><a class="bla-1" href="https://www.youtube.com/watch?v=NnzR5MMdt40"><img src="img/video-thumbnails/sleep-jesus.jpg" class="vid-div" alt="sleep jesus"></a></td>
+			</tr>
+
+			<tr>
+				<td><a class="bla-1" href="https://www.youtube.com/watch?v=YJA1-5Mb6Mw"><img src="img/video-thumbnails/benchmark.jpg" class="vid-div" alt="benchmark"></a></td>
+		</table>
+
+		<table class="video-table" id="promo-table">
+			<tr>
+				<td><a class="bla-1" href="https://vimeo.com/216379304"><img src="img/video-thumbnails/bc-i3.png" class="vid-div"></a></td>
+				<td><a class="bla-1" href="https://www.youtube.com/watch?v=BxFmeZR_KJs"><img src="img/video-thumbnails/cc-tik-tok.png" class="vid-div"></a></td>
+			</tr>
+
+			<tr>
+				<td><a class="bla-1" href="https://www.youtube.com/watch?v=LQm2KOwWriA"><img src="img/video-thumbnails/springfest.jpg" class="vid-div"></a></td>
+				<td><a class="bla-1" href="https://www.youtube.com/watch?v=haR-dQT0UM8"><img src="img/video-thumbnails/dt-promo.jpg" class="vid-div"></a></td>
+			</tr>
+
+			<!-- <tr>
+				<td><a class="bla-1" href="https://www.youtube.com/watch?v=zveMyFTl8cQ"><img src="img/video-thumbnails/groundhog.jpg" class="vid-div" alt="moorpark groundhog day 5k"></a></td>
+				<td><a class="bla-1" href="https://www.youtube.com/watch?v=i35YDx2g2Lc"><img src="img/video-thumbnails/footwork.jpg" class="vid-div" alt="footwork promo"></a></td>
+			</tr> -->
+		</table>
+
+		<table class="video-table" id="other-table">
+			<tr>
+				<td><a class="bla-1" href="https://www.youtube.com/watch?v=AyJtVGYrSSo"><img src="img/video-thumbnails/staple-it.png" class="vid-div"></a></td>
+				<td><a class="bla-1" href="https://www.youtube.com/watch?v=45Dnl-HhON4"><img src="img/video-thumbnails/gushers.png" class="vid-div" alt="gushers project"></a></td>
+			</tr>
+
+			<tr>
+				<td><a class="bla-1" href="https://www.youtube.com/watch?v=7Xm-rcpV3kc"><img src="img/video-thumbnails/snow-day.jpg" class="vid-div"></a></td>
+				<td><a class="bla-1" href="https://www.youtube.com/watch?v=5nAdjcY_4RE"><img src="img/video-thumbnails/romantic.png" class="vid-div" alt="Let's get romantic"></a></td>
+			</tr>
+			<tr>
+				<td><a class="bla-1" href="https://www.youtube.com/watch?v=cMm8vOKBH-E"><img src="img/video-thumbnails/whiteface.jpg" class="vid-div"></a></td>
+				<td><a class="bla-1" href="https://www.youtube.com/watch?v="><img src="img/video-thumbnails/.jpg" class="vid-div"></a></td>
+			</tr>
+			</tr>
+		</table>
+	</div>
+</div>
+
+<div id="resume-div">
+	<img src="img/resume-negative.png" id="resume-img">
+</div>
+
+</body>
+
+</html>

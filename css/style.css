@@ -1,0 +1,317 @@
+body {
+	background-color: rgb(0,0,0);
+	padding: 0;
+	margin: 0;
+	width: 100%;
+
+}
+
+#header {
+	padding-top: 25%;
+	opacity: 0;
+	z-index: 2;
+	position: relative;
+}
+
+#pre_header {
+	background-color: #08232B;
+	height: 1.5em;	
+	padding: 0.5em;
+	position: fixed;
+	z-index: 3;
+	top: 0;
+	left: 0;
+	opacity: 0;
+}
+
+#home-img {
+	display: block;
+	position: relative;
+	width: 40%;
+	margin: auto;
+	margin-top: 2%;
+	text-align: center;
+	opacity: 0;
+	z-index: 1;
+	position: absolute;
+	right: 29%;
+}
+
+#resume-img {
+	width: 100%;
+	margin: auto;
+	display: block;
+	margin-top: 0px;
+	margin-bottom: 100px;
+}
+
+#sound-img {
+	height: 100%;
+	opacity: 0;
+}
+
+#sound-img:hover {
+	cursor: pointer;
+}
+
+
+.social-link {
+	float: left;
+	height: 100%;
+	color: red;
+	margin-top: 5px;
+	opacity: 0;
+}
+
+.social-link:hover {
+	cursor: pointer;
+}
+
+.social-link:hover .social-icons {
+	color: gold;
+}
+
+.social-icons {
+	margin-right: 1em;
+	margin-left: 0.25em;
+	color: white;
+	height: 100%;
+}
+
+#name {
+	color: white;
+	text-align: center;
+	font-family: 'Raleway', sans-serif;
+	/*font-size: 4em;*/
+	font-size: 4.5vw;
+	margin: 10px;
+	margin-bottom: 25px;
+	cursor: default;
+}
+
+#nav-div {
+	margin: auto;
+	width: 40%;
+	height: 30px;
+}
+
+.nav-link {
+	color: white;
+	font-family: 'Josefin Sans', sans-serif;
+	float: left;
+	padding-right: 9%;
+	padding-left: 9%;
+	font-size: 1.8vw;
+	font-weight: 300;
+	width: 15%;
+	text-align: center;
+}
+
+.nav-link:hover {
+	color: gold;
+	cursor: pointer;
+}
+
+#contact {
+	margin-top: 50px;
+	margin-bottom: 50px;
+	padding-top: 0px
+}
+
+#about-div {
+	display: none;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 200;
+	font-style: normal;
+	font-size: 1.3em;
+	color: white;
+	opacity: 0;
+	margin: auto;
+	margin-top: 15px;
+	margin-bottom: 250px;
+	text-align: center;
+	width: 50%;
+}
+
+#contact {
+	font-size: 1.2em;
+}
+
+#resume-div {
+	display: none;
+	opacity: 0;
+	margin: auto;
+	margin-top: 15px;
+	text-align: center;
+	width: 60%;
+}
+
+#video-div {
+	margin: auto;
+	margin-top: 15px;
+	color: white;
+	width: 60%;
+	height: 100%;
+	font-family: 'Josefin Sans', sans-serif;
+	display: none;
+	opacity: 0;
+}
+
+#video-nav {
+	position: relative;
+	left: 0;
+	width: 19%;
+	height: 100%;
+	z-index: 0;
+	display: inline-block;
+	float: left;
+	border-right: 1px solid white;
+}
+
+.video-nav-link {
+	padding-top: 25px;
+	padding-bottom: 25px;
+	max-width: 95%;
+	font-size: 1.5em;
+	font-weight: 300;
+}
+
+.video-nav-link:hover {
+	color: gold;
+	cursor: pointer;
+}
+
+#films-link {
+	opacity: 0.5;
+}
+
+#video-content {
+	padding-top: 15px;
+	position: relative;
+	width: 80%;
+	z-index: 1;
+	display: inline-block;
+	float: left;
+}
+
+.video-table {
+	width: 100%;
+	text-align: center;
+	border-spacing: 0px 45px;
+	margin-top: -40px;
+	margin-bottom: 100px;
+}
+
+.vid-div {
+	width:80%;
+}
+
+.vid-div:hover {
+	box-shadow: 0px 5px 40px white;
+}
+
+#film-table {
+	display: table;
+	opacity: 1;
+}
+
+#promo-table {
+	display: none;
+	opacity: 0;
+}
+
+#other-table {
+	display: none;
+	opacity: 0;
+}
+
+hr {
+	display: block;
+	margin: auto;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	width: 70%;
+	border-width: 0;
+	height: 3px;
+	background-image: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,0.9),rgba(255,255,255,0.9), rgba(255,255,255,0));
+}
+
+iframe {
+	width: 80%;
+}
+
+td {
+	width: 48%;
+}
+
+@media (max-width:768px) {
+	#nav-div {
+		height: 50%;
+	}
+	.nav-link {
+		float: none;
+		margin: auto;
+		font-size: 10vw;
+		width:80%;
+		margin-top: 20%;
+	}
+	#home-img {
+		width: 90%;
+		right:2%;
+	}
+	#header {
+		padding-top: 50%;
+	}
+
+	#pre_header {
+		position: static;
+		width: 100%;
+		text-align: center;
+		padding-top: 0.5em;
+		padding-bottom: 0.5em;
+		padding-right: 0;
+		padding-left: 0;
+	}
+
+	.social-link-a {
+		display: inline-block;
+	}
+
+	#sound-img {
+		padding-right: 2%;
+	}
+
+	#name {
+		font-size: 8vw;
+	}
+
+	#about-div {
+		font-size: 5vw;
+		width: 90%;
+	}
+
+	#contact {
+		margin-top: 0;
+		margin-bottom: 25px;
+		font-size: 5vw;
+	}
+
+	#video-div {
+		width: 90%;
+	}
+
+	.video-nav-link { 
+		font-size: 3vw;
+	}
+
+	#resume-div {
+		width: 95%;
+	}
+
+}
+
+@media (min-width:750px) {
+	#header {
+		padding-top: 25%;
+	}
+}
